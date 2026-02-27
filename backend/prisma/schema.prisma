@@ -1,0 +1,79 @@
+// Prisma Schema para MySQL
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de Usuario para administración
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(ADMIN)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+// Tokens de refresco para JWT
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+// Mensajes del formulario de contacto
+model Contact {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String?
+  message   String   @db.Text
+  phone     String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("contacts")
+}
+
+// Proyectos del portfolio
+model Portfolio {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  shortDesc   String?  @db.VarChar(255)
+  imageUrl    String?
+  videoUrl    String?
+  projectUrl  String?
+  githubUrl   String?
+  technologies String? @db.Text // JSON array como string
+  category    String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("portfolio")
+}
+
+// Enum para roles de usuario
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
