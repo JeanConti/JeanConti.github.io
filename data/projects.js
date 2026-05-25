@@ -54,6 +54,9 @@ const projects = [
   },
 ];
 
+if (typeof window !== 'undefined') {
+  window.portfolioProjects = projects;
+}
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { projects };
 }
