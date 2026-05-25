@@ -1,12 +1,26 @@
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+// Optimized scroll handler (single rAF)
+let ticking = false;
+function onScroll() {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+
+            // Navbar effect
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', scrollY > 100);
+
+            // Parallax effect
+            const heroVisual = document.querySelector('.hero-visual');
+            if (heroVisual) {
+                heroVisual.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+
+            ticking = false;
+        });
+        ticking = true;
     }
-});
+}
+window.addEventListener('scroll', onScroll, { passive: true });
 
 // Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
@@ -184,15 +198,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual) {
-        heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-});
 
 // Animate stats on scroll
 const statsObserver = new IntersectionObserver((entries) => {
