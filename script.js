@@ -231,3 +231,18 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     statsObserver.observe(heroStats);
 }
+
+// Play video when a checkbox modal opens (iOS requires explicit play())
+document.querySelectorAll('.modal-state').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        const modal = checkbox.parentElement.querySelector('.modal');
+        if (!modal) return;
+        const video = modal.querySelector('video');
+        if (!video) return;
+        if (checkbox.checked) {
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+        }
+    });
+});

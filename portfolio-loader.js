@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalVideo.src = videoUrl;
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        modalVideo.play();
+        modalVideo.play().catch(() => {});
     }
     
     function closeVideoModal() {
