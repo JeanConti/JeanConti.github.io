@@ -112,7 +112,7 @@ if (contactForm) {
         
         // Disable button and show loading state
         submitButton.disabled = true;
-        submitButton.innerHTML = '<span>Envoi en cours...</span>';
+        submitButton.innerHTML = `<span>${t('contact.sending') || 'Envoi en cours...'}</span>`;
         
         try {
             const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
@@ -124,14 +124,14 @@ if (contactForm) {
             });
             
             if (response.ok) {
-                showNotification('✅ Merci pour votre message! Je vous répondrai dans les plus brefs délais.', 'success');
+                showNotification(t('contact.successMessage') || '✅ Merci pour votre message! Je vous répondrai dans les plus brefs délais.', 'success');
                 contactForm.reset();
             } else {
                 throw new Error('Erreur lors de l\'envoi du message');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            showNotification('❌ Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.', 'error');
+            showNotification(t('contact.errorMessage') || '❌ Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.', 'error');
         } finally {
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;
@@ -244,5 +244,102 @@ document.querySelectorAll('.modal-state').forEach(checkbox => {
         } else {
             video.pause();
         }
+    });
+});
+
+// ===== I18N Language Switching =====
+let currentLang = localStorage.getItem('portfolio-lang') || 'fr';
+
+function applyTranslations(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Update html lang attribute
+    document.getElementById('htmlTag').setAttribute('lang', lang);
+
+    // Update meta og:locale
+    const metaOgLocale = document.querySelector('meta[property="og:locale"]');
+    if (metaOgLocale) {
+        const localeMap = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' };
+        metaOgLocale.setAttribute('content', localeMap[lang] || 'fr_FR');
+    }
+
+    // Update data-i18n elements (textContent)
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const keys = el.getAttribute('data-i18n').split('.');
+        let value = t;
+        for (const key of keys) {
+            if (value && value[key] !== undefined) {
+                value = value[key];
+            } else {
+                value = null;
+                break;
+            }
+        }
+        if (value !== null && typeof value === 'string') {
+            el.textContent = value;
+        }
+    });
+
+    // Update data-i18n-placeholder elements
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const keys = el.getAttribute('data-i18n-placeholder').split('.');
+        let value = t;
+        for (const key of keys) {
+            if (value && value[key] !== undefined) {
+                value = value[key];
+            } else {
+                value = null;
+                break;
+            }
+        }
+        if (value !== null && typeof value === 'string') {
+            el.setAttribute('placeholder', value);
+        }
+    });
+
+    // Update active flag button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Persist language choice
+    localStorage.setItem('portfolio-lang', lang);
+    currentLang = lang;
+
+    // Dispatch event for other modules
+    document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang, translations: t } }));
+}
+
+// Get translations for current language (used by other modules)
+function t(key) {
+    const keys = key.split('.');
+    let value = translations[currentLang];
+    for (const k of keys) {
+        if (value) value = value[k];
+        else return '';
+    }
+    return typeof value === 'string' ? value : '';
+}
+
+// Get current language code
+function getCurrentLang() {
+    return currentLang;
+}
+
+// Initialize language switcher
+document.addEventListener('DOMContentLoaded', () => {
+    // Apply saved language
+    applyTranslations(currentLang);
+
+    // Add click handlers to flag buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const lang = btn.getAttribute('data-lang');
+            if (lang !== currentLang) {
+                applyTranslations(lang);
+            }
+        });
     });
 });

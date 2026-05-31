@@ -161,6 +161,49 @@ body {
     transition: var(--transition-smooth);
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 1.5rem;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 3px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    opacity: 0.5;
+    line-height: 0;
+}
+
+.lang-btn:hover {
+    opacity: 0.8;
+}
+
+.lang-btn.active {
+    opacity: 1;
+    border-color: var(--color-primary);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.lang-btn svg {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .lang-switcher {
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
