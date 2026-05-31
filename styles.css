@@ -22,8 +22,7 @@ html {
 
 /* Optimisation performances scroll */
 body > section,
-.footer,
-.navbar {
+.footer {
     content-visibility: auto;
     contain-intrinsic-size: 500px;
 }
@@ -1014,20 +1013,25 @@ section {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        left: -100%;
-        top: 70px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
         flex-direction: column;
         background: rgba(15, 23, 42, 0.98);
-        width: 100%;
+        backdrop-filter: blur(20px);
+        padding: 6rem 2rem 2rem;
+        gap: 2rem;
         text-align: center;
-        transition: 0.3s;
-        padding: 2rem;
-        gap: 1.5rem;
-        border-top: 1px solid rgba(139, 92, 246, 0.2);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .nav-menu.active {
-        left: 0;
+        opacity: 1;
+        visibility: visible;
     }
     
     .hamburger {
@@ -1339,29 +1343,6 @@ section {
 }
 
 @media screen and (max-width: 768px) {
-    /* Navbar */
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-        border-radius: 0 0 20px 20px;
-    }
-    .nav-menu.active {
-        display: flex;
-    }
-    .hamburger {
-        display: flex;
-    }
-    
     /* Hero */
     .hero {
         padding-top: 100px;
