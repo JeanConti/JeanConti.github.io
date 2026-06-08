@@ -248,7 +248,14 @@ document.querySelectorAll('.modal-state').forEach(checkbox => {
 });
 
 // ===== I18N Language Switching =====
-let currentLang = localStorage.getItem('portfolio-lang') || 'fr';
+function detectLangFromPath() {
+    const path = window.location.pathname.replace(/\/+$/, '');
+    if (path === '/en' || path.startsWith('/en/')) return 'en';
+    if (path === '/es' || path.startsWith('/es/')) return 'es';
+    return null;
+}
+
+let currentLang = detectLangFromPath() || localStorage.getItem('portfolio-lang') || 'fr';
 
 function applyTranslations(lang) {
     const t = translations[lang];
@@ -327,6 +334,15 @@ function applyTranslations(lang) {
     // Persist language choice
     localStorage.setItem('portfolio-lang', lang);
     currentLang = lang;
+
+    // Update URL path to match language (without page reload)
+    const pathMap = { fr: '/', en: '/en/', es: '/es/' };
+    const targetPath = pathMap[lang] || '/';
+    const current = window.location.pathname.replace(/\/+$/, '') || '/';
+    const target = targetPath.replace(/\/+$/, '') || '/';
+    if (current !== target) {
+        history.replaceState(null, '', targetPath);
+    }
 
     // Dispatch event for other modules
     document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang, translations: t } }));
