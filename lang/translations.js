@@ -1,5 +1,9 @@
 const translations = {
   fr: {
+    seo: {
+      title: "Jean-Michel Conti | Développeur Full-Stack Freelance – NestJS, Node.js, React",
+      description: "Jean-Michel Conti, développeur Full-Stack freelance basé à Bâgé-le-Châtel (Ain). Création d'applications web modernes avec NestJS, Node.js et React. Disponible pour vos projets front-end et back-end."
+    },
     nav: {
       accueil: 'Accueil',
       services: 'Services',
@@ -119,6 +123,10 @@ const translations = {
   },
 
   en: {
+    seo: {
+      title: "Jean-Michel Conti | Full-Stack Freelance Developer – NestJS, Node.js, React",
+      description: "Jean-Michel Conti, freelance Full-Stack developer based in Bâgé-le-Châtel (Ain, France). Building modern web applications with NestJS, Node.js and React. Available for front-end and back-end projects."
+    },
     nav: {
       accueil: 'Home',
       services: 'Services',
@@ -238,6 +246,10 @@ const translations = {
   },
 
   es: {
+    seo: {
+      title: "Jean-Michel Conti | Desarrollador Full-Stack Freelance – NestJS, Node.js, React",
+      description: "Jean-Michel Conti, desarrollador Full-Stack freelance en Bâgé-le-Châtel (Ain, Francia). Creación de aplicaciones web modernas con NestJS, Node.js y React. Disponible para sus proyectos front-end y back-end."
+    },
     nav: {
       accueil: 'Inicio',
       services: 'Servicios',

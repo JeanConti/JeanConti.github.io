@@ -257,6 +257,27 @@ function applyTranslations(lang) {
     // Update html lang attribute
     document.getElementById('htmlTag').setAttribute('lang', lang);
 
+    // Update SEO meta tags
+    const seo = t.seo;
+    if (seo) {
+        document.title = seo.title;
+
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', seo.description);
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', seo.title);
+
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', seo.description);
+
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
+
+        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) twitterDesc.setAttribute('content', seo.description);
+    }
+
     // Update meta og:locale
     const metaOgLocale = document.querySelector('meta[property="og:locale"]');
     if (metaOgLocale) {
