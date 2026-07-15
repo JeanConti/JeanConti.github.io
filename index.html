@@ -130,21 +130,31 @@
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-btn" data-lang="fr" title="Français">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-            <rect width="8" height="24" fill="#0055A4"/>
-            <rect x="8" width="8" height="24" fill="#FFF"/>
-            <rect x="16" width="8" height="24" fill="#EF4135"/>
+            <rect width="8" height="24" fill="#0055A4" />
+            <rect x="8" width="8" height="24" fill="#FFF" />
+            <rect x="16" width="8" height="24" fill="#EF4135" />
           </svg>
         </button>
         <button class="lang-btn" data-lang="en" title="English">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-            <rect width="24" height="2.4" fill="#B22234"/><rect y="2.4" width="24" height="2.4" fill="#FFF"/><rect y="4.8" width="24" height="2.4" fill="#B22234"/><rect y="7.2" width="24" height="2.4" fill="#FFF"/><rect y="9.6" width="24" height="2.4" fill="#B22234"/><rect y="12" width="24" height="2.4" fill="#FFF"/><rect y="14.4" width="24" height="2.4" fill="#B22234"/><rect y="16.8" width="24" height="2.4" fill="#FFF"/><rect y="19.2" width="24" height="2.4" fill="#B22234"/><rect y="21.6" width="24" height="2.4" fill="#FFF"/><rect width="10" height="12" fill="#3C3B6E"/>
+            <rect width="24" height="2.4" fill="#B22234" />
+            <rect y="2.4" width="24" height="2.4" fill="#FFF" />
+            <rect y="4.8" width="24" height="2.4" fill="#B22234" />
+            <rect y="7.2" width="24" height="2.4" fill="#FFF" />
+            <rect y="9.6" width="24" height="2.4" fill="#B22234" />
+            <rect y="12" width="24" height="2.4" fill="#FFF" />
+            <rect y="14.4" width="24" height="2.4" fill="#B22234" />
+            <rect y="16.8" width="24" height="2.4" fill="#FFF" />
+            <rect y="19.2" width="24" height="2.4" fill="#B22234" />
+            <rect y="21.6" width="24" height="2.4" fill="#FFF" />
+            <rect width="10" height="12" fill="#3C3B6E" />
           </svg>
         </button>
         <button class="lang-btn" data-lang="es" title="Español">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-            <rect width="24" height="6" fill="#C60B1E"/>
-            <rect y="6" width="24" height="12" fill="#FFC400"/>
-            <rect y="18" width="24" height="6" fill="#C60B1E"/>
+            <rect width="24" height="6" fill="#C60B1E" />
+            <rect y="6" width="24" height="12" fill="#FFC400" />
+            <rect y="18" width="24" height="6" fill="#C60B1E" />
           </svg>
         </button>
       </div>
@@ -199,7 +209,7 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number">10+</div>
+            <div class="stat-number">2</div>
             <div class="stat-label" data-i18n="home.stat2">Projets complétés</div>
           </div>
           <div class="stat-divider"></div>
@@ -538,6 +548,32 @@
             <p></p>
           </div>
         </div>
+        <div class="project-item">
+          <input type="checkbox" id="project3" class="modal-state">
+          <label for="project3" class="thumbnail">
+            <img src="./assets/images/PerforMax.png" alt="Miniature Projet 1">
+            <div class="overlay" data-i18n="projects.voirDemo">Voir la démo</div>
+          </label>
+
+          <div class="modal">
+            <label for="project3" class="modal-close"></label>
+            <div class="modal-content">
+              <label for="project3" class="modal-close-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </label>
+              <video controls autoplay muted playsinline>
+                <source src="./assets/video/PerforMax.mp4" type="video/mp4">
+                <span data-i18n="projects.videoNotSupported">Votre navigateur ne supporte pas la vidéo.</span>
+              </video>
+            </div>
+          </div>
+          <div class="project-info" style="margin-left: 20px; margin-top: 5px;">
+            <h4>PerfoMax - Outil de diagnostique et optimisation web</h4>
+            <p></p>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -616,21 +652,25 @@
           <form class="contact-form" id="contactForm">
             <div class="form-group">
               <label for="name" class="form-label" data-i18n="contact.formName">Nom complet</label>
-              <input type="text" id="name" name="name" class="form-input" data-i18n-placeholder="contact.formNamePlaceholder" placeholder="Jean Dupont" required>
+              <input type="text" id="name" name="name" class="form-input"
+                data-i18n-placeholder="contact.formNamePlaceholder" placeholder="Jean Dupont" required>
             </div>
             <div class="form-group">
               <label for="email" class="form-label" data-i18n="contact.formEmail">Email</label>
-              <input type="email" id="email" name="email" class="form-input" data-i18n-placeholder="contact.formEmailPlaceholder" placeholder="jean@exemple.fr" required>
+              <input type="email" id="email" name="email" class="form-input"
+                data-i18n-placeholder="contact.formEmailPlaceholder" placeholder="jean@exemple.fr" required>
             </div>
             <div class="form-group">
               <label for="subject" class="form-label" data-i18n="contact.formSubject">Sujet</label>
               <input type="text" id="subject" name="subject" class="form-input"
-                data-i18n-placeholder="contact.formSubjectPlaceholder" placeholder="Projet de développement web" required>
+                data-i18n-placeholder="contact.formSubjectPlaceholder" placeholder="Projet de développement web"
+                required>
             </div>
             <div class="form-group">
               <label for="message" class="form-label" data-i18n="contact.formMessage">Message</label>
               <textarea id="message" name="message" class="form-textarea" rows="5"
-                data-i18n-placeholder="contact.formMessagePlaceholder" placeholder="Décrivez votre projet..." required></textarea>
+                data-i18n-placeholder="contact.formMessagePlaceholder" placeholder="Décrivez votre projet..."
+                required></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-full">
               <span data-i18n="contact.formSubmit">Envoyer le message</span>
@@ -662,7 +702,8 @@
                 DEVELOPMENT</span>
             </div>
           </div>
-          <p class="footer-tagline" data-i18n="footer.tagline">Développeur Full-Stack passionné par la création d'expériences web
+          <p class="footer-tagline" data-i18n="footer.tagline">Développeur Full-Stack passionné par la création
+            d'expériences web
             exceptionnelles</p>
         </div>
         <div class="footer-links">
