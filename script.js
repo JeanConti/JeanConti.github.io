@@ -240,6 +240,8 @@ document.querySelectorAll('.modal-state').forEach(checkbox => {
         const video = modal.querySelector('video');
         if (!video) return;
         if (checkbox.checked) {
+            video.muted = false;
+            video.volume = 1;
             video.play().catch(() => {});
         } else {
             video.pause();
