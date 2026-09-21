@@ -305,7 +305,7 @@ function applyTranslations(lang) {
             }
         }
         if (value !== null && typeof value === 'string') {
-            el.textContent = value;
+            el.innerHTML = value;
         }
     });
 

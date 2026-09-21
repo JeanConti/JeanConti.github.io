@@ -33,7 +33,7 @@ const translations = {
       description:
         'Des solutions complètes et professionnelles pour donner vie à vos projets digitaux',
       card1: {
-        title: 'Développement Front-End',
+        title: 'Développement <br> Front-End',
         desc: 'Interfaces utilisateur modernes et réactives avec React, Vue.js et les dernières technologies web.',
         feat1: 'Design Responsive',
         feat2: 'Animations fluides',
@@ -41,7 +41,7 @@ const translations = {
       },
       card2: {
         badge: 'Populaire',
-        title: 'Développement Full-Stack',
+        title: 'Développement <br> Full-Stack',
         desc: 'Solution complète incluant front-end, back-end, base de données et déploiement.',
         feat1: 'Architecture complète',
         feat2: 'API REST',
@@ -49,7 +49,7 @@ const translations = {
         feat4: 'Déploiement cloud',
       },
       card3: {
-        title: 'Développement Back-End',
+        title: 'Développement <br> Back-End',
         desc: 'APIs robustes et sécurisées avec Node.js, NestJS et bases de données SQL/NoSQL.',
         feat1: 'Node.js & NestJS',
         feat2: 'APIs sécurisées',
@@ -156,7 +156,7 @@ const translations = {
       description:
         'Complete and professional solutions to bring your digital projects to life',
       card1: {
-        title: 'Front-End Development',
+        title: 'Front-End <br> Development',
         desc: 'Modern and reactive user interfaces with React, Vue.js and the latest web technologies.',
         feat1: 'Responsive Design',
         feat2: 'Smooth animations',
@@ -164,7 +164,7 @@ const translations = {
       },
       card2: {
         badge: 'Popular',
-        title: 'Full-Stack Development',
+        title: 'Full-Stack <br> Development',
         desc: 'Complete solution including front-end, back-end, database and deployment.',
         feat1: 'Complete architecture',
         feat2: 'REST API',
@@ -172,7 +172,7 @@ const translations = {
         feat4: 'Cloud deployment',
       },
       card3: {
-        title: 'Back-End Development',
+        title: 'Back-End <br> Development',
         desc: 'Robust and secure APIs with Node.js, NestJS and SQL/NoSQL databases.',
         feat1: 'Node.js & NestJS',
         feat2: 'Secure APIs',
@@ -279,7 +279,7 @@ const translations = {
       description:
         'Soluciones completas y profesionales para dar vida a sus proyectos digitales',
       card1: {
-        title: 'Desarrollo Front-End',
+        title: 'Desarrollo <br> Front-End',
         desc: 'Interfaces de usuario modernas y reactivas con React, Vue.js y las últimas tecnologías web.',
         feat1: 'Diseño Responsive',
         feat2: 'Animaciones fluidas',
@@ -287,7 +287,7 @@ const translations = {
       },
       card2: {
         badge: 'Popular',
-        title: 'Desarrollo Full-Stack',
+        title: 'Desarrollo <br> Full-Stack',
         desc: 'Solución completa que incluye front-end, back-end, base de datos y despliegue.',
         feat1: 'Arquitectura completa',
         feat2: 'API REST',
@@ -295,7 +295,7 @@ const translations = {
         feat4: 'Despliegue en la nube',
       },
       card3: {
-        title: 'Desarrollo Back-End',
+        title: 'Desarrollo <br> Back-End',
         desc: 'APIs robustas y seguras con Node.js, NestJS y bases de datos SQL/NoSQL.',
         feat1: 'Node.js & NestJS',
         feat2: 'APIs seguras',
